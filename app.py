@@ -214,7 +214,10 @@ with col2:
 # -----------------------------
 st.subheader("NIFTY 50 Price Chart")
 
-chart_data = live_nifty[['Close']].copy()
+chart_data = live_nifty['Close'].copy()
+
+if isinstance(chart_data, pd.DataFrame):
+    chart_data = chart_data.iloc[:, 0]
 
 st.line_chart(chart_data)
 
